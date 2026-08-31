@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catalogue</title>
+    <title>Book Catalogue</title>
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -12,7 +12,7 @@
 
 <center>
 
-    <h2>Book Catalogue</h2>
+    <h2 id="departmentName">Book Catalogue</h2>
 
     <table border="1" cellpadding="10">
 
@@ -23,81 +23,99 @@
             <th>Cart</th>
         </tr>
 
-        <tr>
-            <td>
-                <img src="xml.jpg" width="80" height="100">
-            </td>
-
-            <td>
-                <b>XML Bible</b><br>
-                Author: Winston<br>
-                Publisher: Wiley
-            </td>
-
-            <td>$40.5</td>
-
-            <td>
-                <button>Add to Cart</button>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <img src="ai.jpg" width="80" height="100">
-            </td>
-
-            <td>
-                <b>AI</b><br>
-                Author: S. Russell<br>
-                Publisher: Prentice Hall
-            </td>
-
-            <td>$63</td>
-
-            <td>
-                <button>Add to Cart</button>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <img src="java.jpg" width="80" height="100">
-            </td>
-
-            <td>
-                <b>Java 2</b><br>
-                Author: Watson<br>
-                Publisher: BPB Publications
-            </td>
-
-            <td>$35.5</td>
-
-            <td>
-                <button>Add to Cart</button>
-            </td>
-        </tr>
-
-        <tr>
-            <td>
-                <img src="html.jpg" width="80" height="100">
-            </td>
-
-            <td>
-                <b>HTML in 24 Hours</b><br>
-                Author: Sam Peter<br>
-                Publisher: SamPublication
-            </td>
-
-            <td>$50</td>
-
-            <td>
-                <button>Add to Cart</button>
-            </td>
-        </tr>
+        <tbody id="bookList"></tbody>
 
     </table>
 
 </center>
+
+
+<script>
+
+const dept = new URLSearchParams(window.location.search).get("dept");
+
+let books = [];
+
+if (dept === "cse") {
+
+    document.getElementById("departmentName").innerHTML = "Computer Science Engineering";
+
+    books = [
+        ["book1.png", "C Programming", "Dennis Ritchie", "Pearson", "$40"],
+        ["book2.png", "Data Structures", "Seymour Lipschutz", "McGraw Hill", "$45"],
+        ["book1.png", "Java 2", "Watson", "BPB Publications", "$35.5"],
+        ["book2.png", "Python Programming", "Mark Lutz", "O'Reilly", "$50"]
+    ];
+
+}
+
+else if (dept === "ece") {
+
+    document.getElementById("departmentName").innerHTML = "Electronics & Communication";
+
+    books = [
+        ["book1.png", "Digital Electronics", "Morris Mano", "Pearson", "$45"],
+        ["book2.png", "Signals and Systems", "A. V. Oppenheim", "Pearson", "$50"],
+        ["book1.png", "Communication Systems", "Simon Haykin", "Wiley", "$55"],
+        ["book2.png", "Microprocessor", "Ramesh Gaonkar", "Penram", "$40"]
+    ];
+
+}
+
+else if (dept === "ee") {
+
+    document.getElementById("departmentName").innerHTML = "Electrical & Electronics";
+
+    books = [
+        ["book1.png", "Circuit Theory", "A. Chakrabarti", "Dhanpat Rai", "$40"],
+        ["book2.png", "Electrical Machines", "P.S. Bimbhra", "Khanna", "$50"],
+        ["book1.png", "Power Systems", "C.L. Wadhwa", "New Age", "$55"],
+        ["book2.png", "Control Systems", "Nagrath & Gopal", "New Age", "$45"]
+    ];
+
+}
+
+else if (dept === "civil") {
+
+    document.getElementById("departmentName").innerHTML = "Civil Engineering";
+
+    books = [
+        ["book1.png", "Engineering Mechanics", "R.K. Bansal", "Laxmi", "$40"],
+        ["book2.png", "Surveying", "B.C. Punmia", "Laxmi", "$45"],
+        ["book1.png", "Structural Engineering", "R.C. Hibbeler", "Pearson", "$55"],
+        ["book2.png", "Construction Technology", "Sushil Kumar", "Standard", "$50"]
+    ];
+
+}
+
+
+const bookList = document.getElementById("bookList");
+
+books.forEach(function(book) {
+
+    bookList.innerHTML += `
+        <tr>
+            <td>
+                <img src="${book[0]}" width="80" height="100">
+            </td>
+
+            <td>
+                <b>${book[1]}</b><br>
+                Author: ${book[2]}<br>
+                Publisher: ${book[3]}
+            </td>
+
+            <td>${book[4]}</td>
+
+            <td>
+                <button>Add to Cart</button>
+            </td>
+        </tr>
+    `;
+
+});
+
+</script>
 
 </body>
 </html>
