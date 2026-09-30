@@ -1,21 +1,37 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
-<title>Online Book Store</title>
+    <title>Online Book Store</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<frameset rows="20%,80%">
+<body>
 
-    <frame src="top.html" name="top">
+    <div class="container">
 
-    <frameset cols="25%,75%">
-        <frame src="left.html" name="left">
-        <frame src="homepage.html" name="right">
-    </frameset>
+        <div class="top">
+            <iframe src="top.html" name="top"></iframe>
+        </div>
 
-    <frame src="footer.html" name="footer">
+        <div class="middle">
 
-</frameset>
+            <div class="left">
+                <iframe src="left.html" name="left"></iframe>
+            </div>
+
+            <div class="right">
+                <iframe src="homepage.html" name="right"></iframe>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            <iframe src="footer.html" name="footer"></iframe>
+        </div>
+
+    </div>
+
+</body>
 
 </html>
